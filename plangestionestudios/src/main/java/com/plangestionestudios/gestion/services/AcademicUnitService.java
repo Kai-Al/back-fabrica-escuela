@@ -8,4 +8,6 @@ public interface AcademicUnitService {
     public void deleteAcademicUnit(int id);
     public List<AcademicUnit> getAllAcademicUnits();
     public AcademicUnit getAcademicUnitById(int id);
+
+    public void createAcademicUnit();
 }
