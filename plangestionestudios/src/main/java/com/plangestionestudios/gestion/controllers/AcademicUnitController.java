@@ -36,8 +36,13 @@ public class AcademicUnitController {
         AcademicUnit academicUnit = academicUnitService.getAcademicUnitById(id);
         return new ResponseEntity<>(academicUnit, HttpStatus.OK);
     }
-    public void createAcademicUnits() {
-
+    @PostMapping("/create")
+    public ResponseEntity<AcademicUnit> createAcademicUnits(@RequestBody AcademicUnit academicUnit) {
+        AcademicUnit academicUnitCreated = academicUnitService.createAcademicUnit(academicUnit);
+        if(academicUnitCreated != null) {
+            return new ResponseEntity<>(academicUnit, HttpStatus.CREATED);
+        }
+        return new ResponseEntity<>(academicUnit, HttpStatus.BAD_REQUEST);
     }
 
 
