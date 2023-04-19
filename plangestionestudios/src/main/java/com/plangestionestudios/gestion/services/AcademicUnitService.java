@@ -9,5 +9,5 @@ public interface AcademicUnitService {
     public List<AcademicUnit> getAllAcademicUnits();
     public AcademicUnit getAcademicUnitById(int id);
 
-    public void createAcademicUnit();
+    public AcademicUnit createAcademicUnit(AcademicUnit academicUnit);
 }

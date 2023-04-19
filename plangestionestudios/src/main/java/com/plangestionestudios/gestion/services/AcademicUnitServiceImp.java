@@ -16,14 +16,10 @@ public class AcademicUnitServiceImp implements AcademicUnitService{
     @Autowired
     private AcademicUnitRepository academicUnitRepository;
 
-<<<<<<< Updated upstream
-=======
-
     public void deleteAcademicUnit(int id) {
         academicUnitRepository.deleteById(id);
     }
 
->>>>>>> Stashed changes
     @Override
     public List<AcademicUnit> getAllAcademicUnits() {
         List<AcademicUnit> academicUnitList = academicUnitRepository.findAll();
@@ -35,6 +31,15 @@ public class AcademicUnitServiceImp implements AcademicUnitService{
         Optional<AcademicUnit> academicUnit = academicUnitRepository.findById(id);
         if(!academicUnit.isPresent()) return null;
         return academicUnit.get();
+    }
+
+    @Override
+    public AcademicUnit createAcademicUnit(AcademicUnit academicUnit) {
+        int idAcademicUnit = academicUnit.getIdAcademinUnit();
+        Optional<AcademicUnit> academicUnitFound = academicUnitRepository.findById(idAcademicUnit);
+        if(academicUnitFound.isPresent()) return null;
+        academicUnitRepository.save(academicUnit);
+        return academicUnit;
     }
 
 }
