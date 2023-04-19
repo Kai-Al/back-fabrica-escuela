@@ -1,11 +1,13 @@
 package com.plangestionestudios.gestion.entities;
 
 import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
+@Data
 @Setter
 @NoArgsConstructor
 @Entity
