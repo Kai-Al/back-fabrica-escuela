@@ -11,7 +11,7 @@ import java.util.List;
 public class AcademicUnitServiceImp implements AcademicUnitService{
 
     @Autowired
-    AcademicUnitRepository academicUnitRepository;
+    private AcademicUnitRepository academicUnitRepository;
     @Override
     public List<AcademicUnit> getAllAcademicUnits() {
         List<AcademicUnit> academicUnitList = academicUnitRepository.findAll();
