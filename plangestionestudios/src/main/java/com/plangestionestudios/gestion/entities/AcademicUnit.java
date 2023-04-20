@@ -16,7 +16,7 @@ public class AcademicUnit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
-    private int idAcademicUnit;
+    private int idAcademinUnit;
     @Column(name = "codigo_unidad_academica")
     private String codeAcademicUnit;
     @Column(name = "tipo_unidad_academica")
