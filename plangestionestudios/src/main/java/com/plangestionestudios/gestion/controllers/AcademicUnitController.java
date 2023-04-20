@@ -21,7 +21,7 @@ public class AcademicUnitController {
     @RequestMapping("/{id}")
     public ResponseEntity<HttpStatus> deleteBloque(@PathVariable("id") int id) {
         academicUnitService.deleteAcademicUnit(id);
-        return new ResponseEntity(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
 

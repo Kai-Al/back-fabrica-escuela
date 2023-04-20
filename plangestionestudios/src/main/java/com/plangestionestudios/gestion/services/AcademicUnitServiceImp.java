@@ -22,15 +22,13 @@ public class AcademicUnitServiceImp implements AcademicUnitService{
 
     @Override
     public List<AcademicUnit> getAllAcademicUnits() {
-        List<AcademicUnit> academicUnitList = academicUnitRepository.findAll();
-        return academicUnitList;
+        return academicUnitRepository.findAll();
     }
 
     @Override
     public AcademicUnit getAcademicUnitById(int id) {
         Optional<AcademicUnit> academicUnit = academicUnitRepository.findById(id);
-        if(!academicUnit.isPresent()) return null;
-        return academicUnit.get();
+        return academicUnit.orElse(null);
     }
 
     @Override
