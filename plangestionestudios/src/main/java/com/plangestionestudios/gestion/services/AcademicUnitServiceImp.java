@@ -3,9 +3,7 @@ package com.plangestionestudios.gestion.services;
 import com.plangestionestudios.gestion.entities.AcademicUnit;
 import com.plangestionestudios.gestion.repositories.AcademicUnitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import java.util.Optional;
