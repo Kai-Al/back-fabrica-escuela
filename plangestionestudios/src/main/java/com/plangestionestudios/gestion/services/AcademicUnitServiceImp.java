@@ -31,7 +31,7 @@ public class AcademicUnitServiceImp implements AcademicUnitService{
 
     @Override
     public AcademicUnit createAcademicUnit(AcademicUnit academicUnit) {
-        int idAcademicUnit = academicUnit.getIdAcademinUnit();
+        int idAcademicUnit = academicUnit.getIdAcademicUnit();
         Optional<AcademicUnit> academicUnitFound = academicUnitRepository.findById(idAcademicUnit);
         if(academicUnitFound.isPresent()) return null;
         academicUnitRepository.save(academicUnit);

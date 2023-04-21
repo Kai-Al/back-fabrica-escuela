@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Data
 @Setter
@@ -16,8 +18,8 @@ public class AcademicUnit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
-    private int idAcademinUnit;
-    @Column(name = "codigo_unidad_academica")
+    private int idAcademicUnit;
+    @Column(name = "codigo_unidad_academica", nullable = false, unique = true)
     private String codeAcademicUnit;
     @Column(name = "tipo_unidad_academica")
     private String typeAcademicUnit;
@@ -25,4 +27,6 @@ public class AcademicUnit {
     private String deanName;
     @Column(name = "descripcion_unidad_academica")
     private String description;
+    @OneToMany (mappedBy = "unidadAcademica")
+    private List<AcademicSubUnit> subUnidadesAcademicas;
 }

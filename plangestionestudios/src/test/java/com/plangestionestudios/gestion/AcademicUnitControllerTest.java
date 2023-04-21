@@ -34,7 +34,7 @@ public class AcademicUnitControllerTest {
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
         // Ahora se puede probar que se pueda eliminar una unidad académica que existe
         academicUnitController.createAcademicUnits(academicUnit);
-        response = academicUnitController.deleteBloque(academicUnit.getIdAcademinUnit());
+        response = academicUnitController.deleteBloque(academicUnit.getIdAcademicUnit());
         assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
     }
     @Test
@@ -48,7 +48,7 @@ public class AcademicUnitControllerTest {
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
         // Ahora se puede probar que se pueda obtener una unidad académica que existe
         academicUnitController.createAcademicUnits(academicUnit);
-        response = academicUnitController.getAcademicUnitById(academicUnit.getIdAcademinUnit());
+        response = academicUnitController.getAcademicUnitById(academicUnit.getIdAcademicUnit());
         assertEquals(HttpStatus.OK, response.getStatusCode());
     }
     @Test
