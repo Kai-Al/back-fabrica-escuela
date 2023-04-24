@@ -6,7 +6,7 @@ import com.plangestionestudios.gestion.entities.AcademicUnit;
 import java.util.List;
 
 public interface AcademicSubUnitService {
-    public void deleteAcademicSubUnit(int id);
+    public boolean deleteAcademicSubUnit(int id);
     public List<AcademicUnit> getAllAcademicSubUnits();
     public AcademicSubUnit getAcademicSubUnitById(int id);
     public AcademicSubUnit createAcademicSubUnit(AcademicSubUnit academicSubUnit);

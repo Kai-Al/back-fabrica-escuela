@@ -15,8 +15,8 @@ public class AcademicSubUnitServiceImp implements AcademicSubUnitService{
     private AcademicSubUnitRepository academicSubUnitRepository;
 
     @Override
-    public void deleteAcademicSubUnit(int id) {
-
+    public boolean deleteAcademicSubUnit(int id) {
+        return false;
     }
 
     @Override
