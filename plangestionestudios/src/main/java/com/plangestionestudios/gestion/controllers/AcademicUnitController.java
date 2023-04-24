@@ -30,15 +30,17 @@ public class AcademicUnitController {
     @GetMapping("/{id}")
     public ResponseEntity<AcademicUnit> getAcademicUnitById(@PathVariable("id") int id) {
         AcademicUnit academicUnit = academicUnitService.getAcademicUnitById(id);
-        return new ResponseEntity<>(academicUnit, HttpStatus.OK);
+        if(academicUnit != null) return new ResponseEntity<>(academicUnit, HttpStatus.OK);
+        return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
     }
+
     @PostMapping("/create")
     public ResponseEntity<AcademicUnit> createAcademicUnits(@RequestBody AcademicUnit academicUnit) {
         AcademicUnit academicUnitCreated = academicUnitService.createAcademicUnit(academicUnit);
         if(academicUnitCreated != null) {
-            return new ResponseEntity<>(academicUnit, HttpStatus.CREATED);
+            return new ResponseEntity<>(academicUnitCreated, HttpStatus.CREATED);
         }
-        return new ResponseEntity<>(academicUnit, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(academicUnitCreated, HttpStatus.BAD_REQUEST);
     }
 
 }
