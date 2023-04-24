@@ -14,8 +14,13 @@ public class AcademicUnitServiceImp implements AcademicUnitService{
     @Autowired
     private AcademicUnitRepository academicUnitRepository;
 
-    public void deleteAcademicUnit(int id) {
-        academicUnitRepository.deleteById(id);
+    public boolean deleteAcademicUnit(int id) {
+        AcademicUnit academicUnitFound = this.getAcademicUnitById(id);
+        if(academicUnitFound != null) {
+            academicUnitRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
 
     @Override
