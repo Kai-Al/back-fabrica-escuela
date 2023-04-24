@@ -20,22 +20,28 @@ public class AcademicUnitServiceImp implements AcademicUnitService{
 
     @Override
     public List<AcademicUnit> getAllAcademicUnits() {
-        return academicUnitRepository.findAll();
+        List<AcademicUnit> academicUnitList = academicUnitRepository.findAll();
+        return academicUnitList;
     }
 
     @Override
     public AcademicUnit getAcademicUnitById(int id) {
         Optional<AcademicUnit> academicUnit = academicUnitRepository.findById(id);
-        return academicUnit.orElse(null);
+        if(academicUnit.isPresent()) return academicUnit.get();
+        return null;
     }
 
     @Override
     public AcademicUnit createAcademicUnit(AcademicUnit academicUnit) {
-        int idAcademicUnit = academicUnit.getIdAcademicUnit();
-        Optional<AcademicUnit> academicUnitFound = academicUnitRepository.findById(idAcademicUnit);
-        if(academicUnitFound.isPresent()) return null;
-        academicUnitRepository.save(academicUnit);
-        return academicUnit;
+        String codeAU = academicUnit.getCodeAcademicUnit();
+        if(codeAU == null || codeAU.length() == 0) return null;
+        List<AcademicUnit> academicUnitFound = academicUnitRepository.findByCodeAcademicUnit(codeAU);
+        System.out.println(academicUnitFound);
+        if(academicUnitFound.isEmpty()) {
+            academicUnitRepository.save(academicUnit);
+            return academicUnit;
+        }
+        return null;
     }
 
 }
