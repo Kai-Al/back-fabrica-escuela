@@ -5,6 +5,8 @@ import com.plangestionestudios.gestion.repositories.AcademicUnitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,8 +40,9 @@ public class AcademicUnitServiceImp implements AcademicUnitService{
 
     @Override
     public AcademicUnit createAcademicUnit(AcademicUnit academicUnit) {
+        if(!this.isCorrectInfoAU(academicUnit)) return null;
+
         String codeAU = academicUnit.getCodeAcademicUnit();
-        if(codeAU == null || codeAU.length() == 0) return null;
         List<AcademicUnit> academicUnitFound = academicUnitRepository.findByCodeAcademicUnit(codeAU);
         System.out.println(academicUnitFound);
         if(academicUnitFound.isEmpty()) {
@@ -48,5 +51,24 @@ public class AcademicUnitServiceImp implements AcademicUnitService{
         }
         return null;
     }
+
+    private boolean isCorrectInfoAU(AcademicUnit academicUnit) {
+
+        //String[] typesUA = {"facultad", "departamento", "instituto", "escuela"};
+
+        String nameAU = academicUnit.getNameAcademicUnit();
+        String codeAU = academicUnit.getCodeAcademicUnit();
+        String typeAU = academicUnit.getTypeAcademicUnit();
+        String deanAU = academicUnit.getDeanName();
+        String descriptionAU = academicUnit.getDescription();
+        String ubicationAU = academicUnit.getUbicationAcademicUnit();
+        String codeCenterCodeAU = academicUnit.getCostCenterCode();
+
+        if(nameAU == null || codeAU == null || typeAU == null || deanAU == null || descriptionAU == null || ubicationAU == null || codeCenterCodeAU == null ) return false;
+        if(codeAU.length() == 0) return false;
+
+        return true;
+    }
+
 
 }
