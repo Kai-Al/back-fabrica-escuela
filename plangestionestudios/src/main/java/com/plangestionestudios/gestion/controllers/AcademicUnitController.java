@@ -22,6 +22,11 @@ public class AcademicUnitController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    @PutMapping("/update/{id}")
+    public ResponseEntity<?> updateAcademicUnitById(@PathVariable("id") int id, @RequestBody AcademicUnit academicUnit) {
+        return null;
+    }
+
     @GetMapping("/all")
     public ResponseEntity<List<AcademicUnit>> getAllAcademicUnits() {
         List<AcademicUnit> academicUnitList = academicUnitService.getAllAcademicUnits();
