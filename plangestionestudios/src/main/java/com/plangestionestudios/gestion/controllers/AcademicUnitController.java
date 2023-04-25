@@ -23,8 +23,10 @@ public class AcademicUnitController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> updateAcademicUnitById(@PathVariable("id") int id, @RequestBody AcademicUnit academicUnit) {
-        return null;
+    public ResponseEntity<AcademicUnit> updateAcademicUnitById(@PathVariable("id") int id, @RequestBody AcademicUnit academicUnit) {
+        AcademicUnit academicUnitUpdated = this.academicUnitService.updateAcademicUnit(id, academicUnit);
+        if(academicUnitUpdated != null) return new ResponseEntity<>(academicUnitUpdated, HttpStatus.OK);
+        return new ResponseEntity<>(academicUnitUpdated, HttpStatus.NOT_FOUND);
     }
 
     @GetMapping("/all")
