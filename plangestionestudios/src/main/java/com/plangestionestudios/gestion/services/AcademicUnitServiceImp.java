@@ -4,9 +4,6 @@ import com.plangestionestudios.gestion.entities.AcademicUnit;
 import com.plangestionestudios.gestion.repositories.AcademicUnitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,6 +26,19 @@ public class AcademicUnitServiceImp implements AcademicUnitService{
     public List<AcademicUnit> getAllAcademicUnits() {
         List<AcademicUnit> academicUnitList = academicUnitRepository.findAll();
         return academicUnitList;
+    }
+
+    @Override
+    public AcademicUnit updateAcademicUnit(int id, AcademicUnit academicUnit) {
+        AcademicUnit foundAcademicUnit = this.getAcademicUnitById(id);
+        if(foundAcademicUnit != null) {
+            foundAcademicUnit.setDeanName(academicUnit.getDeanName());
+            foundAcademicUnit.setDescription(academicUnit.getDescription());
+            foundAcademicUnit.setNameAcademicUnit(academicUnit.getNameAcademicUnit());
+            this.academicUnitRepository.save(foundAcademicUnit);
+            return this.getAcademicUnitById(id);
+        }
+        return null;
     }
 
     @Override
@@ -69,6 +79,5 @@ public class AcademicUnitServiceImp implements AcademicUnitService{
 
         return true;
     }
-
 
 }
