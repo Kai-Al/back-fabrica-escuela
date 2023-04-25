@@ -19,14 +19,20 @@ public class AcademicUnit {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
     private int idAcademicUnit;
+    @Column(name = "nombre_unidad_academica", nullable = false)
+    private String nameAcademicUnit;
     @Column(name = "codigo_unidad_academica", nullable = false, unique = true)
     private String codeAcademicUnit;
-    @Column(name = "tipo_unidad_academica")
+    @Column(name = "tipo_unidad_academica", nullable = false)
     private String typeAcademicUnit;
-    @Column(name = "nombre_decano")
+    @Column(name = "nombre_decano", nullable = false)
     private String deanName;
-    @Column(name = "descripcion_unidad_academica")
+    @Column(name = "descripcion_unidad_academica", nullable = false)
     private String description;
+    @Column(name = "ubicacion_unidad_academica", nullable = false)
+    private String ubicationAcademicUnit;
+    @Column(name = "codigo_centro_costos", nullable = false)
+    private String costCenterCode;
     @OneToMany (mappedBy = "unidadAcademica")
     private List<AcademicSubUnit> subUnidadesAcademicas;
 }
