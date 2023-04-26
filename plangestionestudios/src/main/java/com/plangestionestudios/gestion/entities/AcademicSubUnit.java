@@ -19,13 +19,15 @@ public class AcademicSubUnit {
     private int idAcademicSubUnit;
     @Column(name = "codigo_sub_unidad_academica", nullable = false, unique = true)
     private String codeAcademicSubUnit;
-    @Column(name = "tipo_sub_unidad_academica")
+    @Column(name = "nombre_sub_unidad_academica", nullable = false)
+    private String nameAcademicSubUnit;
+    @Column(name = "tipo_sub_unidad_academica", nullable = false)
     private String typeAcademicSubUnit;
-    @Column(name = "nombre_jefe")
+    @Column(name = "nombre_jefe", nullable = false)
     private String headName;
-    @Column(name = "descripcion_sub_unidad_academica")
+    @Column(name = "descripcion_sub_unidad_academica", nullable = false)
     private String description;
     @ManyToOne
-    @JoinColumn(name = "id_academic_unit")
+    @JoinColumn(name = "id_academic_unit", nullable = false)
     private AcademicUnit unidadAcademica;
 }
