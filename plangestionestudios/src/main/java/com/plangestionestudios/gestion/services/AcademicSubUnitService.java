@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface AcademicSubUnitService {
     public boolean deleteAcademicSubUnit(int id);
-    public List<AcademicUnit> getAllAcademicSubUnits();
+    public List<AcademicSubUnit> getAllAcademicSubUnits();
     public AcademicSubUnit getAcademicSubUnitById(int id);
     public AcademicSubUnit createAcademicSubUnit(AcademicSubUnit academicSubUnit);
 }

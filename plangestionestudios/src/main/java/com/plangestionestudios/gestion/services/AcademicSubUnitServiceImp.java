@@ -20,9 +20,11 @@ public class AcademicSubUnitServiceImp implements AcademicSubUnitService{
     }
 
     @Override
-    public List<AcademicUnit> getAllAcademicSubUnits() {
-        return null;
+    public List<AcademicSubUnit> getAllAcademicSubUnits() {
+        List<AcademicSubUnit> academicSubUnitList = this.academicSubUnitRepository.findAll();
+        return academicSubUnitList;
     }
+
 
     @Override
     public AcademicSubUnit getAcademicSubUnitById(int id) {
