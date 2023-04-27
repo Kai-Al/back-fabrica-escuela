@@ -33,6 +33,8 @@ public class AcademicUnit {
     private String ubicationAcademicUnit;
     @Column(name = "codigo_centro_costos", nullable = false)
     private String costCenterCode;
+    @Column(name = "url_creacion_unidad_academica")
+    private String urlCreationAcademicUnit;
     @OneToMany (mappedBy = "unidadAcademica")
     private List<AcademicSubUnit> subUnidadesAcademicas;
 }
