@@ -1,5 +1,6 @@
 package com.plangestionestudios.gestion.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
@@ -29,5 +30,6 @@ public class AcademicSubUnit {
     private String description;
     @ManyToOne
     @JoinColumn(name = "id_academic_unit", nullable = false)
+    @JsonBackReference
     private AcademicUnit unidadAcademica;
 }
