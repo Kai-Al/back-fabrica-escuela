@@ -13,7 +13,8 @@ public class AcademicSubUnitServiceImp implements AcademicSubUnitService{
 
     @Autowired
     private AcademicSubUnitRepository academicSubUnitRepository;
-
+    @Autowired
+    private AcademicUnitService academicUnitService;
     @Override
     public boolean deleteAcademicSubUnit(int id) {
         return false;
@@ -33,6 +34,11 @@ public class AcademicSubUnitServiceImp implements AcademicSubUnitService{
 
     @Override
     public AcademicSubUnit createAcademicSubUnit(AcademicSubUnit academicSubUnit) {
-        return null;
+        int idAcademicUnit = academicSubUnit.getUnidadAcademica().getIdAcademicUnit();
+        AcademicUnit academicUnit = this.academicUnitService.getAcademicUnitById(idAcademicUnit);
+        if(academicUnit == null) return null;
+        academicSubUnit.setUnidadAcademica(academicUnit);
+        this.academicSubUnitRepository.save(academicSubUnit);
+        return academicSubUnit;
     }
 }

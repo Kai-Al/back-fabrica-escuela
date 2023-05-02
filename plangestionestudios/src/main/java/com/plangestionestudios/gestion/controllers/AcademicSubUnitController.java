@@ -6,9 +6,7 @@ import com.plangestionestudios.gestion.services.AcademicSubUnitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,9 +18,16 @@ public class AcademicSubUnitController {
     private AcademicSubUnitService academicSubUnitService;
 
     @GetMapping("/all")
-    public ResponseEntity<List<AcademicSubUnit>> getAllAcademicUnits() {
+    public ResponseEntity<List<AcademicSubUnit>> getAllAcademicSubUnits() {
         List<AcademicSubUnit> academicSubUnitList = this.academicSubUnitService.getAllAcademicSubUnits();
         return new ResponseEntity<>(academicSubUnitList, HttpStatus.OK);
+    }
+
+    @PostMapping("")
+    public ResponseEntity<AcademicSubUnit> createAcademicSubUnits(@RequestBody AcademicSubUnit academicSubUnit) {
+        AcademicSubUnit academicSubUnitCreated = this.academicSubUnitService.createAcademicSubUnit(academicSubUnit);
+        if(academicSubUnitCreated != null) return new ResponseEntity<>(academicSubUnitCreated,HttpStatus.OK);
+        return new ResponseEntity<>(null,HttpStatus.OK);
     }
 
 }
