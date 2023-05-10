@@ -17,8 +17,16 @@ public class AcademicUnitController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<HttpStatus> deleteBloque(@PathVariable("id") int id) {
-        academicUnitService.deleteAcademicUnit(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        boolean wasDeleteAcademicUnit = academicUnitService.deleteAcademicUnit(id);
+        if(wasDeleteAcademicUnit == true) return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<AcademicUnit> updateAcademicUnitById(@PathVariable("id") int id, @RequestBody AcademicUnit academicUnit) {
+        AcademicUnit academicUnitUpdated = this.academicUnitService.updateAcademicUnit(id, academicUnit);
+        if(academicUnitUpdated != null) return new ResponseEntity<>(academicUnitUpdated, HttpStatus.OK);
+        return new ResponseEntity<>(academicUnitUpdated, HttpStatus.NOT_FOUND);
     }
 
     @GetMapping("/all")
@@ -30,15 +38,17 @@ public class AcademicUnitController {
     @GetMapping("/{id}")
     public ResponseEntity<AcademicUnit> getAcademicUnitById(@PathVariable("id") int id) {
         AcademicUnit academicUnit = academicUnitService.getAcademicUnitById(id);
-        return new ResponseEntity<>(academicUnit, HttpStatus.OK);
+        if(academicUnit != null) return new ResponseEntity<>(academicUnit, HttpStatus.OK);
+        return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
     }
-    @PostMapping("/create")
+
+    @PostMapping("")
     public ResponseEntity<AcademicUnit> createAcademicUnits(@RequestBody AcademicUnit academicUnit) {
         AcademicUnit academicUnitCreated = academicUnitService.createAcademicUnit(academicUnit);
         if(academicUnitCreated != null) {
-            return new ResponseEntity<>(academicUnit, HttpStatus.CREATED);
+            return new ResponseEntity<>(academicUnitCreated, HttpStatus.CREATED);
         }
-        return new ResponseEntity<>(academicUnit, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(academicUnitCreated, HttpStatus.BAD_REQUEST);
     }
 
 }
