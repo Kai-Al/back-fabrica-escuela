@@ -26,7 +26,6 @@ public class AcademicSubUnitController {
     @PostMapping("")
     public ResponseEntity<AcademicSubUnit> createAcademicSubUnits(@RequestBody AcademicSubUnit academicSubUnit) {
         AcademicSubUnit academicSubUnitCreated = this.academicSubUnitService.createAcademicSubUnit(academicSubUnit);
-        System.out.println("Sub unidad que llega del servicio: " + academicSubUnitCreated);
         if(academicSubUnitCreated != null) return new ResponseEntity<>(academicSubUnitCreated,HttpStatus.OK);
         return new ResponseEntity<>(null,HttpStatus.BAD_REQUEST);
     }
