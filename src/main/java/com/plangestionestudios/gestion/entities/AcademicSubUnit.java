@@ -31,5 +31,5 @@ public class AcademicSubUnit {
     @ManyToOne
     @JoinColumn(name = "id_academic_unit", nullable = false)
     @JsonBackReference
-    private AcademicUnit unidadAcademica;
+    private AcademicUnit academicUnit;
 }
