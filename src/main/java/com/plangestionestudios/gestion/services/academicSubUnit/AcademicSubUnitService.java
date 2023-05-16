@@ -1,4 +1,4 @@
-package com.plangestionestudios.gestion.services;
+package com.plangestionestudios.gestion.services.academicSubUnit;
 
 import com.plangestionestudios.gestion.entities.AcademicSubUnit;
 import com.plangestionestudios.gestion.entities.AcademicUnit;
