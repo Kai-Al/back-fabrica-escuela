@@ -18,7 +18,7 @@ public class AcademicUnitController {
     @DeleteMapping("/{id}")
     public ResponseEntity<HttpStatus> deleteBloque(@PathVariable("id") int id) {
         boolean wasDeleteAcademicUnit = academicUnitService.deleteAcademicUnit(id);
-        if(wasDeleteAcademicUnit == true) return new ResponseEntity<>(HttpStatus.OK);
+        if(wasDeleteAcademicUnit) return new ResponseEntity<>(HttpStatus.OK);
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
