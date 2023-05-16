@@ -23,6 +23,12 @@ public class AcademicSubUnitController {
         return new ResponseEntity<>(academicSubUnitList, HttpStatus.OK);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<AcademicSubUnit> getAcademicSubUnitById(@PathVariable("id") int id) {
+
+        return null;
+    }
+
     @PostMapping("")
     public ResponseEntity<AcademicSubUnit> createAcademicSubUnits(@RequestBody AcademicSubUnit academicSubUnit) {
         AcademicSubUnit academicSubUnitCreated = this.academicSubUnitService.createAcademicSubUnit(academicSubUnit);
