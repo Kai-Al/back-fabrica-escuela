@@ -6,16 +6,20 @@ import com.plangestionestudios.gestion.repositories.AcademicSubUnitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AcademicSubUnitServiceImp implements AcademicSubUnitService{
 
     @Autowired
     private AcademicSubUnitRepository academicSubUnitRepository;
+
     @Autowired
     private AcademicUnitService academicUnitService;
+
     @Override
     public boolean deleteAcademicSubUnit(int id) {
         return false;
@@ -27,9 +31,24 @@ public class AcademicSubUnitServiceImp implements AcademicSubUnitService{
         return academicSubUnitList;
     }
 
-
     @Override
     public AcademicSubUnit getAcademicSubUnitById(int id) {
+        Optional<AcademicSubUnit> academicSubUnit = this.academicSubUnitRepository.findById(id);
+        if(academicSubUnit.isPresent()) return academicSubUnit.get();
+        return null;
+    }
+
+    @Override
+    public AcademicSubUnit updateAcademicSubUnit(int id, AcademicSubUnit academicSubUnit) {
+        AcademicSubUnit foundAcademicSubUnit = this.getAcademicSubUnitById(id);
+        if(foundAcademicSubUnit != null){
+            foundAcademicSubUnit.setNameAcademicSubUnit(academicSubUnit.getNameAcademicSubUnit());
+            foundAcademicSubUnit.setHeadName(academicSubUnit.getHeadName());
+            foundAcademicSubUnit.setTypeAcademicSubUnit(academicSubUnit.getTypeAcademicSubUnit());
+            foundAcademicSubUnit.setDescription(academicSubUnit.getDescription());
+            this.academicSubUnitRepository.save(foundAcademicSubUnit);
+            return this.getAcademicSubUnitById(id);
+        }
         return null;
     }
 
