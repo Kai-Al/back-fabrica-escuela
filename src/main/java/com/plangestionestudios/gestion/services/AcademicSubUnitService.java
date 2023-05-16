@@ -9,5 +9,6 @@ public interface AcademicSubUnitService {
     public boolean deleteAcademicSubUnit(int id);
     public List<AcademicSubUnit> getAllAcademicSubUnits();
     public AcademicSubUnit getAcademicSubUnitById(int id);
+    public AcademicSubUnit updateAcademicSubUnit(int id, AcademicSubUnit academicSubUnit);
     public AcademicSubUnit createAcademicSubUnit(AcademicSubUnit academicSubUnit);
 }
