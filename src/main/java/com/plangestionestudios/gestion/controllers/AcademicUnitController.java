@@ -1,7 +1,7 @@
 package com.plangestionestudios.gestion.controllers;
 
 import com.plangestionestudios.gestion.entities.AcademicUnit;
-import com.plangestionestudios.gestion.services.AcademicUnitService;
+import com.plangestionestudios.gestion.services.academicUnit.AcademicUnitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +19,7 @@ public class AcademicUnitController {
     @DeleteMapping("/{id}")
     public ResponseEntity<HttpStatus> deleteBloque(@PathVariable("id") int id) {
         boolean wasDeleteAcademicUnit = academicUnitService.deleteAcademicUnit(id);
-        if(wasDeleteAcademicUnit == true) return new ResponseEntity<>(HttpStatus.OK);
+        if(wasDeleteAcademicUnit) return new ResponseEntity<>(HttpStatus.OK);
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 

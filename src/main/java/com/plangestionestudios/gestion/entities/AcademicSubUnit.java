@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
-@Data
 @Setter
 @NoArgsConstructor
 @Entity
@@ -31,5 +30,5 @@ public class AcademicSubUnit {
     @ManyToOne
     @JoinColumn(name = "id_academic_unit", nullable = false)
     @JsonBackReference
-    private AcademicUnit unidadAcademica;
+    private AcademicUnit academicUnit;
 }

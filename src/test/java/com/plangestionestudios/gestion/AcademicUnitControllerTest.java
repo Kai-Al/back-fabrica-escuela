@@ -21,10 +21,13 @@ public class AcademicUnitControllerTest {
 
     @BeforeAll
     public static void setUp() {
-        academicUnit.setDeanName("dean");
+        academicUnit.setNameAcademicUnit("name");
         academicUnit.setCodeAcademicUnit("code");
-        academicUnit.setTypeAcademicUnit("type");
+        academicUnit.setTypeAcademicUnit("facultad");
+        academicUnit.setDeanName("dean");
         academicUnit.setDescription("description");
+        academicUnit.setUbicationAcademicUnit("ubication");
+        academicUnit.setCostCenterCode("costCenter");
     }
 
     @Test

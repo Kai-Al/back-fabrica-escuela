@@ -9,7 +9,6 @@ import lombok.Setter;
 import java.util.List;
 
 @Getter
-@Data
 @Setter
 @NoArgsConstructor
 @Entity
@@ -35,6 +34,6 @@ public class AcademicUnit {
     private String costCenterCode;
     @Column(name = "url_creacion_unidad_academica")
     private String urlCreationAcademicUnit;
-    @OneToMany (mappedBy = "unidadAcademica")
-    private List<AcademicSubUnit> subUnidadesAcademicas;
+    @OneToMany (mappedBy = "academicUnit")
+    private List<AcademicSubUnit> academicSubUnits;
 }
